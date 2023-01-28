@@ -12,12 +12,21 @@ import Home from "./component/home.jsx";
 let counter = 0;
 
 function tick() {
-    counter++git r
+    counter++
+
+    const stop = () => {
+        clearInterval(timer)
+    }
+
+    const reset = () => {
+        counter = 0
+    }
+
     let arraycounter = counter.toString().padStart(6,0).split('');
     
     const element = (
-        
-        <div className=" container d-flex justify-content-center" 
+        <>
+        <div className="container d-flex justify-content-center" 
         style={{marginTop: "25px", color: "white"}}>
             <h1 className="text-center" style={{color: "red"}}>C O N T A D O R</h1>
             <br />
@@ -31,9 +40,14 @@ function tick() {
             }
             </div>
       </div>
+      <div className="d-flex justify-content-center" style={{marginTop: "50px"}}>
+        <button className="btn btn-success" style={{marginRight: "8px"}} onClick={stop}>Stop</button>
+        <button className="btn btn-warning" onClick={reset}>Reset</button>
+        </div>
+      </>
     );
     ReactDOM.render(element,document.querySelector("#app"));
   }
   
-  setInterval(tick, 1000);
+  const timer = setInterval(tick, 1000);
 //ReactDOM.render( < Home / > , document.querySelector("#app"));
